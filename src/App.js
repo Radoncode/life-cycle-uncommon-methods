@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import { Component } from 'react';
 import './App.css';
+import MyComponent from './MyComponent';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+
+  state = {
+    age: 27
+  }
+
+  addOneYear = () => {
+    this.setState(prevState => ({
+      age: prevState.age + 1
+    }))
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <MyComponent age={this.state.age} />
+        <button onClick={this.addOneYear}>Changer le props</button>
+      </div>
+    );
+  }
+  
 }
 
 export default App;
